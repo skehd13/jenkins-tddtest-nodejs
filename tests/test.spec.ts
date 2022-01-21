@@ -162,7 +162,7 @@ describe("로그인BDD", () => {
 describe("회원가입BDD", () => {
   describe("이메일 중복확인", () => {
     //Given
-    const notEmail = "cdcc1cf23fd";
+    const notEmail = "cdscc1cf23fd";
     const notDBEmail = "test2@test2.com";
     const useDBEmail = "test@test.com";
     const emailValidation = (str: string) => {
