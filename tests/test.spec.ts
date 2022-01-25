@@ -3,22 +3,22 @@ import { expect } from "chai";
 
 import app from "../src/server/server";
 
-describe("GET /", () => {
-  it('"hello world" 텍스트를 받아야와야함', done => {
-    request(app)
-      .get("/")
-      .expect(200)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-          return;
-        }
+// describe("GET /", () => {
+//   it('"hello world" 텍스트를 받아야와야함', done => {
+//     request(app)
+//       .get("/")
+//       .expect(200)
+//       .end((err, res) => {
+//         if (err) {
+//           done(err);
+//           return;
+//         }
 
-        expect(res.text).to.equal("hello world");
-        done();
-      });
-  });
-});
+//         expect(res.text).to.equal("hello world");
+//         done();
+//       });
+//   });
+// });
 
 describe("회원가입", () => {
   const newUserData = {

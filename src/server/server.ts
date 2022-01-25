@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import bodyParser from "body-parser";
+import path from "path";
 
 const app = express();
 
@@ -9,12 +10,14 @@ app.use(
     extended: true
   })
 );
-
+app.use("/", express.static(path.join(__dirname, "../../public")));
+app.set("views", path.join(__dirname, "../../public/views"));
 const helloWorldFn = (req: Request, res: Response, next: NextFunction) => {
-  res.send("hello world");
+  res.render("index.ejs");
 };
 
 const loginFn = (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.body);
   if (!req.body) {
     res.status(400).send("Bad Request");
   }
@@ -63,6 +66,7 @@ const users = [
   }
 ];
 app.get("/", helloWorldFn);
+app.get("/login", helloWorldFn);
 app.get("/user", checkUser);
 app.post("/user", createUser);
 app.get("/users", usersFn);
