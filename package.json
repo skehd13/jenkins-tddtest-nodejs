@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "ts-node src/server/server.ts",
-    "test": "npm run webpack && env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' -exit",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' -exit",
     "webpack": "webpack"
   },
   "author": "",

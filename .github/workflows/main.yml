@@ -34,9 +34,14 @@ jobs:
       - name: Npm Install
         run: npm install
 
+      # webpack build
+      - name: Webpack Build
+        run: npx webpack
+
       # Npm Test
       - name: Npm Test
         run: npm test
+
   cd:
     # The type of runner that the job will run on
     needs: ci
