@@ -7,7 +7,7 @@ const App = () => {
     <div id="app">
       <div id="hello">hello world</div>
       <form
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           console.log(event.target);
           const data = new FormData(event.currentTarget);
@@ -15,17 +15,17 @@ const App = () => {
 
           const values = {
             email: data.get("email"),
-            password: data.get("password")
+            password: data.get("password"),
           };
           console.log(JSON.stringify(values));
           fetch(`/login`, {
             method: "POST",
             headers: {
               Accept: "application/json",
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(values)
-          }).then(response => {
+            body: JSON.stringify(values),
+          }).then((response) => {
             if (!response.ok) {
               alert("정보확인");
               return;

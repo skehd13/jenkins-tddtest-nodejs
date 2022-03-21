@@ -1,7 +1,7 @@
 import request from "supertest";
 import { expect } from "chai";
 
-import app from "../src/server/server";
+import app from "../src/server/app";
 
 // describe("GET /", () => {
 //   it('"hello world" 텍스트를 받아야와야함', done => {
