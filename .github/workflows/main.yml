@@ -42,6 +42,9 @@ jobs:
       - name: Npm Test
         run: npm test
 
+      - name: pwd Log
+        run: pwd
+
   cd:
     # The type of runner that the job will run on
     needs: ci
@@ -54,6 +57,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      # cp bundle file
+      - name: cp bundle
+        run: cp ./public/js/* /Users/test/node-tdd/public/js/
 
       # PM2 reload all
       - name: Pm2 Reload All
