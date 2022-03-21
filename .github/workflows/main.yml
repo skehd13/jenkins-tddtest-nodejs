@@ -41,6 +41,10 @@ jobs:
       - name: Npm Install
         run: npm install
 
+      # PM2 stop all
+      - name: Pm2 stop All
+        run: pm2 stop all
+
       # Npm Test
       - name: Npm Test
         run: npm test
