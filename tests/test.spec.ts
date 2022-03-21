@@ -23,12 +23,16 @@ import app from "../src/server/server";
 describe("회원가입", () => {
   const newUserData = {
     id: Math.random().toString(36).substr(2, 7),
-    email: Math.random().toString(36).substr(2, 7) + "@" + Math.random().toString(36).substr(2, 7) + ".com",
+    email:
+      Math.random().toString(36).substr(2, 7) +
+      "@" +
+      Math.random().toString(36).substr(2, 7) +
+      ".com",
     name: "test",
     password: Math.random().toString(36).substr(2, 7),
-    age: Math.floor(Math.random() * 100)
+    age: Math.floor(Math.random() * 100),
   };
-  it("아이디가 있는지 확인", done => {
+  it("아이디가 있는지 확인", (done) => {
     request(app)
       .get("/user")
       .send(newUserData)
@@ -42,7 +46,7 @@ describe("회원가입", () => {
         done();
       });
   });
-  it("계정생성", done => {
+  it("계정생성", (done) => {
     request(app)
       .post("/user")
       .send(newUserData)
@@ -53,8 +57,8 @@ describe("회원가입", () => {
           return;
         }
         const data: any[] = res.body.users;
-        const idData = data.map(r => ({
-          id: r.id
+        const idData = data.map((r) => ({
+          id: r.id,
         }));
         expect(res.body.result).to.true;
         expect(idData).to.deep.include({ id: newUserData.id });
@@ -69,10 +73,10 @@ describe("로그인 처리", () => {
     password: "1234",
     name: "테스트",
     id: "1cVf3e",
-    age: 29
+    age: 29,
   };
 
-  it("프로필정보를 받아와야함", done => {
+  it("프로필정보를 받아와야함", (done) => {
     request(app)
       .get("/users")
       .expect(200)
@@ -82,20 +86,20 @@ describe("로그인 처리", () => {
           return;
         }
         const data: any[] = res.body;
-        const emailData = data.map(r => ({
-          email: r.email
+        const emailData = data.map((r) => ({
+          email: r.email,
         }));
         expect(emailData).to.deep.include({ email: userData.email });
         expect(res.body).to.length.gt(0);
         done();
       });
   });
-  it("로그인 처리", done => {
+  it("로그인 처리", (done) => {
     request(app)
       .post("/login")
       .send({
         email: userData.email,
-        password: userData.password
+        password: userData.password,
       })
       .expect(200)
       .end((err, res) => {
@@ -130,10 +134,10 @@ describe("로그인BDD", () => {
           .post("/login")
           .send({ email, password })
           .expect(200)
-          .then(response => {
+          .then((response) => {
             expect(response.body).to.be.haveOwnProperty("token");
           })
-          .catch(error => {
+          .catch((error) => {
             throw error;
           });
       });
@@ -142,7 +146,10 @@ describe("로그인BDD", () => {
     context("틀린 이메일/패스워드", () => {
       //Then
       it("401리턴시", async () => {
-        return request(app).post("/login").send({ id: "qwer", password: "zxcv" }).expect(401);
+        return request(app)
+          .post("/login")
+          .send({ id: "qwer", password: "zxcv" })
+          .expect(401);
       });
     });
   });
@@ -166,14 +173,15 @@ describe("회원가입BDD", () => {
     const notDBEmail = "test2@test2.com";
     const useDBEmail = "test@test.com";
     const emailValidation = (str: string) => {
-      const reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      const reg =
+        /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       return reg.test(str);
     };
     //When
     context("유저가 이메일 형식을 맞추지않고 보냈다", () => {
       //Then
       it("이메일 정규식으로 확인", () => {
-        return expect(emailValidation(notEmail)).to.false;
+        expect(emailValidation(notEmail)).to.false;
       });
     });
 
@@ -184,10 +192,10 @@ describe("회원가입BDD", () => {
           .get("/user")
           .query({ email: notDBEmail })
           .expect(200)
-          .then(response => {
+          .then((response) => {
             expect(response.body.result).to.be.true;
           })
-          .catch(error => {
+          .catch((error) => {
             throw error;
           });
       });
@@ -200,10 +208,10 @@ describe("회원가입BDD", () => {
           .get("/user")
           .query({ email: useDBEmail })
           .expect(200)
-          .then(response => {
+          .then((response) => {
             expect(response.body.result).to.be.false;
           })
-          .catch(error => {
+          .catch((error) => {
             throw error;
           });
       });
