@@ -39,6 +39,7 @@ jobs:
         run: npm test
   cd:
     # The type of runner that the job will run on
+    needs: ci
     runs-on: self-hosted
 
     strategy:
