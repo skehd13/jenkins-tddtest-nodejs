@@ -63,6 +63,12 @@ jobs:
       - name: cp bundle
         run: cp ./public/js/* ~/jenkins-tddtest-nodejs/public/js/
 
+      - name: use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.0.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          catch: "npm"
+
       - name: build
         run: |
           git pull
