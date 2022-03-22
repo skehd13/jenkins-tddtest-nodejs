@@ -49,8 +49,7 @@ jobs:
     # The type of runner that the job will run on
     needs: ci
     runs-on: self-hosted
-    env:
-      working-directory: ~/jenkins-tddtest-nodejs
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -73,7 +72,7 @@ jobs:
 
       - name: pm2 reload all
         run:
-          pm2 reload all
+          npx pm2 reload all
 
           # cp bundle file
       - name: cp bundle
