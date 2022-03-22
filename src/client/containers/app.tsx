@@ -38,7 +38,7 @@ const App = () => {
         <input name="email" id="email" />
         <input name="password" id="password" />
         <button type="submit" id="submitBt">
-          완료123
+          완료12
         </button>
       </form>
     </div>
