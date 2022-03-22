@@ -68,4 +68,4 @@ jobs:
           git pull
           npm install
           pm2 reload all
-        working-directory: ${{ env.working-directory }}
+        working-directory: /home/cedar-ubuntu/jenkins-tddtest-nodejs
