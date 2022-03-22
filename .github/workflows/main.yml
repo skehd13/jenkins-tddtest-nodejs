@@ -63,4 +63,8 @@ jobs:
         run: cp ./public/js/* $HOME/jenkins-tddtest-nodejs/public/js/
 
       - name: build
-        run: cd $HOME/jenkins-tddtest-nodejs && git pull && npm install && pm2 reload all
+        run: |
+          git pull
+          npm install
+          pm2 reload all
+          working-directory: $HOME/jenkins-tddtest-nodejs
