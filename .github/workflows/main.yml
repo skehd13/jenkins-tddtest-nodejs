@@ -63,8 +63,7 @@ jobs:
         run: cp ./public/js/* $HOME/jenkins-tddtest-nodejs/public/js/
 
       - name: git pull
-        run: cd $HOME/jenkins-tddtest-nodejs
-        run: git pull
+        run: cd $HOME/jenkins-tddtest-nodejs && git pull
 
       # PM2 reload all
       - name: build
