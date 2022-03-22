@@ -59,10 +59,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # cp bundle file
-      - name: cp bundle
-        run: cp ./public/js/* ~/jenkins-tddtest-nodejs/public/js/
-
       - name: use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.0.0
         with:
@@ -76,4 +72,9 @@ jobs:
         working-directory: /home/cedar-ubuntu/jenkins-tddtest-nodejs
 
       - name: pm2 reload all
-        run: pm2 reload all
+        run:
+          pm2 reload all
+
+          # cp bundle file
+      - name: cp bundle
+        run: cp ./public/js/* ~/jenkins-tddtest-nodejs/public/js/
