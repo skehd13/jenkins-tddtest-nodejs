@@ -49,7 +49,8 @@ jobs:
     # The type of runner that the job will run on
     needs: ci
     runs-on: self-hosted
-
+    env:
+      working-directory: ~/jenkins-tddtest-nodejs
     strategy:
       matrix:
         node-version: [16.x]
@@ -67,4 +68,4 @@ jobs:
           git pull
           npm install
           pm2 reload all
-        path: ~/jenkins-tddtest-nodejs
+        working-directory: ${{ env.working-directory }}
