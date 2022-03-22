@@ -60,11 +60,11 @@ jobs:
 
       # cp bundle file
       - name: cp bundle
-        run: cp ./public/js/* $HOME/jenkins-tddtest-nodejs/public/js/
+        run: cp ./public/js/* ~/jenkins-tddtest-nodejs/public/js/
 
       - name: build
         run: |
           git pull
           npm install
           pm2 reload all
-        working-directory: $HOME/jenkins-tddtest-nodejs
+        working-directory: ~/jenkins-tddtest-nodejs
