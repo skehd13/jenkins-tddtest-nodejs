@@ -67,4 +67,4 @@ jobs:
           git pull
           npm install
           pm2 reload all
-        working-directory: ~/jenkins-tddtest-nodejs
+        path: ~/jenkins-tddtest-nodejs
