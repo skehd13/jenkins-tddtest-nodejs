@@ -73,5 +73,7 @@ jobs:
         run: |
           git pull
           npm install
-          pm2 reload all
         working-directory: /home/cedar-ubuntu/jenkins-tddtest-nodejs
+
+      - name: pm2 reload all
+        run: pm2 reload all
