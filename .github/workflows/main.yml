@@ -60,8 +60,8 @@ jobs:
 
       # cp bundle file
       - name: cp bundle
-        run: cp ./public/js/* /Users/test/node-tdd/public/js/
+        run: cp ./public/js/* $HOME/jenkins-tddtest-nodejs/public/js/
 
       # PM2 reload all
       - name: Pm2 Reload All
-        run: pm2 reload all
+        run: $HOME/jenkins-tddtest-nodejs/build.sh
