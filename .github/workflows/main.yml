@@ -62,9 +62,5 @@ jobs:
       - name: cp bundle
         run: cp ./public/js/* $HOME/jenkins-tddtest-nodejs/public/js/
 
-      - name: git pull
-        run: cd $HOME/jenkins-tddtest-nodejs && git pull
-
-      # PM2 reload all
       - name: build
-        run: $HOME/jenkins-tddtest-nodejs/build.sh
+        run: cd $HOME/jenkins-tddtest-nodejs && git pull && npm install && pm2 reload all
