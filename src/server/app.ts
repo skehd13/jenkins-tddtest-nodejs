@@ -67,11 +67,16 @@ const users = [
     age: 27,
   },
 ];
+
+const hello = (req: Request, res: Response) => {
+  res.send("hello");
+};
 app.get("/", helloWorldFn);
 app.get("/login", helloWorldFn);
 app.get("/user", checkUser);
 app.post("/user", createUser);
 app.get("/users", usersFn);
 app.post("/login", loginFn);
+app.get("/hello", hello);
 
 export default app;
