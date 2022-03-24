@@ -67,8 +67,6 @@ jobs:
       - uses: technote-space/get-diff-action@v6
         with:
           PATTERNS: "*.json"
-          FILES: |
-            package.json
 
       - name: build
         run: |
