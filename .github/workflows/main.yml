@@ -72,12 +72,12 @@ jobs:
       - name: build
         run: |
           git pull
-        working-directory: /home/test/jenkins-tddtest-nodejs
+        working-directory: /Users/test/jenkins-tddtest-nodejs
 
       - name: build
         run: |
           npm install
-        working-directory: /home/test/jenkins-tddtest-nodejs
+        working-directory: /Users/test/jenkins-tddtest-nodejs
         if: env.GIT_DIFF
 
       - name: pm2 reload all
