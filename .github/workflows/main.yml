@@ -66,6 +66,7 @@ jobs:
 
       - uses: technote-space/get-diff-action@v6
         with:
+          PATTERNS: "*.json"
           FILES: |
             package.json
 
@@ -74,7 +75,7 @@ jobs:
           git pull
         working-directory: /Users/test/jenkins-tddtest-nodejs
 
-      - name: build
+      - name: install
         run: |
           npm install
         working-directory: /Users/test/jenkins-tddtest-nodejs
