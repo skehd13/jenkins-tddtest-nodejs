@@ -64,11 +64,21 @@ jobs:
           node-version: ${{ matrix.node-version }}
           catch: "npm"
 
+      - uses: technote-space/get-diff-action@v6
+        with:
+          FILES: |
+            package.json
+
       - name: build
         run: |
           git pull
+        working-directory: /home/test/jenkins-tddtest-nodejs
+
+      - name: build
+        run: |
           npm install
-        working-directory: /home/cedar-ubuntu/jenkins-tddtest-nodejs
+        working-directory: /home/test/jenkins-tddtest-nodejs
+        if: env.GIT_DIFF
 
       - name: pm2 reload all
         run:
